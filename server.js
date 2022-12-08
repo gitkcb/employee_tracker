@@ -13,14 +13,17 @@ const db = mysql.createConnection({
     database: "employee_db",
 },
 console.log('Connected to the employees_db database')
+
 );
 
+const employeeInfo = () => {
 inquirer.prompt([
     {
         type: "list",
-        name: "openingchoice",
+        name: "question",
         message: "What would you like to do?",
         choices: ["View All Employees", "Add Employer", "Update Employee Role", "View All Roles", "Add Role", "View All Departments", "Add Department", "View All Employees", "Quit"],
 
     }
-])
+])}
+employeeInfo();
