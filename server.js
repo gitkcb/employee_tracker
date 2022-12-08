@@ -15,11 +15,12 @@ const db = mysql.createConnection({
 console.log('Connected to the employees_db database'),
 
 );
-pageGreeting();
+
 pageGreeting = () => {
     console.log("Welcome to the employee database!")
     employeeInfo();
-}
+};
+pageGreeting();
 
 const employeeInfo = () => {
 inquirer.prompt([
@@ -35,7 +36,7 @@ inquirer.prompt([
 .then((results) => {
     const { question } = results;
     if(results === "View All Departments") {
-        showDepartments();
+        viewAllDepartments();
     }
     if(results === "View All Employees") {
          viewAllEmployees();
@@ -56,7 +57,7 @@ inquirer.prompt([
         addDepartment();
     }
     if(results === "Quit"){
-        endFunction()   
+        connection.end()   
      }
 
 })}
