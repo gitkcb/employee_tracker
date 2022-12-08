@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-     "dev": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,8 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^16.0.3",
-    "inquirer": "^9.1.4",
+    "express": "^4.18.2",
+    "inquirer": "^7.3.3",
     "mysql2": "^2.3.3",
     "requirejs": "^2.3.6"
   }
