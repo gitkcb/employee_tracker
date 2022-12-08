@@ -15,6 +15,11 @@ const db = mysql.createConnection({
 console.log('Connected to the employees_db database'),
 
 );
+pageGreeting();
+pageGreeting = () => {
+    console.log("Welcome to the employee database!")
+    employeeInfo();
+}
 
 const employeeInfo = () => {
 inquirer.prompt([
