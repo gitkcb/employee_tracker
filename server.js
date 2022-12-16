@@ -108,11 +108,10 @@ addEmployee = async () => {
         });
 };
 updateEmployeeRole = async () => {
-    const [employee] = await db.promise().query(`SELECT last_name AS name FROM employee`);
-    const [roleUpdate] = await db.promise().query(`SELECT role.title FROM employee LEFT JOIN role ON employee.role_id = role.id`);
+    const [employee] = await db.promise().query(`SELECT employee.id AS value, employee.last_name AS name FROM employee`);
+    const [roleUpdate] = await db.promise().query(`SELECT role.id AS value, role.title AS name FROM role`);
 
-   // UPDATE role.title, employee.last_name FROM employee LEFT JOIN role ON employee.role_id = role.id SET ?
-   //SELECT role.title as value FROM role
+
     inquirer.prompt([{
         type: 'list',
         name: 'last_name',
@@ -129,11 +128,12 @@ updateEmployeeRole = async () => {
     }
     ])
         .then(async data => {
-            const sql = ``;
-            await db.promise().query(sql, data)
+            const sql = `UPDATE employee SET role_id = ? WHERE id = ?`;
+            await db.promise().query(sql, [data.title, data.last_name])
             console.log("Employee has been updated");
+            employeeInfo();
         });
-     
+    
 };
 addRole = async () => {
     const [department] = await db.promise().query(`SELECT department.id AS value, department.name AS name FROM department`);
